@@ -38,9 +38,13 @@ public class UnitSelectionManager : MonoBehaviour
             EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected>().Build(entityManager);
             
             NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
+            NativeArray<Selected> selectedArray = entityQuery.ToComponentDataArray<Selected>(Allocator.Temp);
             for (int i = 0; i < entityArray.Length; i++)
             {
                 entityManager.SetComponentEnabled<Selected>(entityArray[i], false);
+                Selected selected = selectedArray[i];
+                selected.onDeselected = true;
+                entityManager.SetComponentData(entityArray[i], selected);
             }
             
             Rect selectionAreaRect = GetSelectionAreaRect();
@@ -65,6 +69,9 @@ public class UnitSelectionManager : MonoBehaviour
                     {
                         // Unit is inside the selection area
                         entityManager.SetComponentEnabled<Selected>(entityArray[i], true);
+                        Selected selected = entityManager.GetComponentData<Selected>(entityArray[i]);
+                        selected.onSelected = true;
+                        entityManager.SetComponentData(entityArray[i], selected);
                     }
                 }
             }
@@ -94,6 +101,9 @@ public class UnitSelectionManager : MonoBehaviour
                     {
                         // Hit a Unit
                         entityManager.SetComponentEnabled<Selected>(raycastHit.Entity, true);
+                        Selected selected = entityManager.GetComponentData<Selected>(raycastHit.Entity);
+                        selected.onSelected = true;
+                        entityManager.SetComponentData(raycastHit.Entity, selected);
                     }
                 }
             }
