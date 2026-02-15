@@ -12,13 +12,7 @@ partial struct TestingSystem : ISystem
     {
         /*
         int unitCount = 0;
-        // foreach ((RefRW<LocalTransform> localTransform, RefRO<UnitMover> unitMover,
-        //              RefRW<PhysicsVelocity> physicsVelocity, RefRO<Selected> selected) in SystemAPI
-        //              .Query<RefRW<LocalTransform>, RefRO<UnitMover>, RefRW<PhysicsVelocity>, RefRO<Selected>>())
-        foreach ((RefRW<LocalTransform> localTransform, RefRO<UnitMover> unitMover,
-                     RefRW<PhysicsVelocity> physicsVelocity) in SystemAPI
-                     // .Query<RefRW<LocalTransform>, RefRO<UnitMover>, RefRW<PhysicsVelocity>>().WithDisabled<Selected>())
-                     .Query<RefRW<LocalTransform>, RefRO<UnitMover>, RefRW<PhysicsVelocity>>().WithPresent<Selected>())
+        foreach (RefRW<Zombie> zombie in SystemAPI.Query<RefRW<Zombie>>())
         {
             unitCount++;
         }
