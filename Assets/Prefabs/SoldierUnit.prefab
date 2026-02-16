@@ -106,6 +106,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoldierUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 7005349845209837768, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
+      propertyPath: range
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005349845209837768, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
+      propertyPath: targetFaction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8629918134380936989, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -159,6 +167,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5416087711316176172, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8532651372040955918}
+    - targetCorrespondingSourceObject: {fileID: 5416087711316176172, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5884397842785584153}
   m_SourcePrefab: {fileID: 100100000, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
 --- !u!1 &1469031042334359167 stripped
 GameObject:
@@ -191,6 +202,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1602ea0fa3f99478c093dc9e5155a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FriendlyAuthoring
+--- !u!114 &5884397842785584153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469031042334359167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46b0ddd8917714479eaedcf2a787e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShootAttackAuthoring
+  timerMax: 0.2
 --- !u!4 &2920975995538091086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8629918134380936989, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
