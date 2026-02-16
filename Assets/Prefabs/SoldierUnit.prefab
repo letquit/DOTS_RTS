@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootAttackAuthoring
   timerMax: 0.2
+  damageAmount: 5
 --- !u!4 &2920975995538091086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8629918134380936989, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
