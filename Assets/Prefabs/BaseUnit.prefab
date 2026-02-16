@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7005349845209837768}
   - component: {fileID: 947641581678937927}
   - component: {fileID: -3334021409830967052}
-  - component: {fileID: 5314461610351538658}
+  - component: {fileID: 5208054977046814154}
   m_Layer: 6
   m_Name: BaseUnit
   m_TagString: Untagged
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7eab87df4d56514b9d62801b73f32d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetAuthoring
+  targetGameObject: {fileID: 0}
 --- !u!114 &-3334021409830967052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthAuthoring
   healthAmount: 100
---- !u!114 &5314461610351538658
+--- !u!114 &5208054977046814154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
