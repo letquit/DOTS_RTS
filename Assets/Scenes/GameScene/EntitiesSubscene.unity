@@ -119,6 +119,98 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &220324467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 614965804913778495, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_Name
+      value: ZombieUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 614965804913778495, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 614965804913778495, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 220324469}
+  m_SourcePrefab: {fileID: 100100000, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+--- !u!1 &220324468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 614965804913778495, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+  m_PrefabInstance: {fileID: 220324467}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &220324469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220324468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea33e78c44a3a8644aeb14575c95c457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomWalkingAuthoring
+  targetPosition:
+    x: 11
+    y: 0
+    z: 12
+  originPosition:
+    x: 11
+    y: 0
+    z: 12
+  distanceMin: 3
+  distanceMax: 10
+  randomSeed: 32
 --- !u!1001 &346415304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,6 +355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieSpawnerAuthoring
   timerMax: 1.5
+  randomWalkingDistanceMin: 3
+  randomWalkingDistanceMax: 10
 --- !u!4 &503605657
 Transform:
   m_ObjectHideFlags: 0
@@ -393,9 +487,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 614965804913778495, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.55
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -403,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.39
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3774759646729080078, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -436,8 +534,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 614965804913778495, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1438429348}
   m_SourcePrefab: {fileID: 100100000, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+--- !u!1 &1438429347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 614965804913778495, guid: 3e500ba6f382ca14890c956009bc106f, type: 3}
+  m_PrefabInstance: {fileID: 1438429346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438429348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438429347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea33e78c44a3a8644aeb14575c95c457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomWalkingAuthoring
+  targetPosition:
+    x: 11
+    y: 0
+    z: 12
+  originPosition:
+    x: 11
+    y: 0
+    z: 12
+  distanceMin: 3
+  distanceMax: 10
+  randomSeed: 56
 --- !u!1001 &1526400822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -679,4 +808,5 @@ SceneRoots:
   - {fileID: 1877374349}
   - {fileID: 423535011}
   - {fileID: 1438429346}
+  - {fileID: 220324467}
   - {fileID: 503605657}

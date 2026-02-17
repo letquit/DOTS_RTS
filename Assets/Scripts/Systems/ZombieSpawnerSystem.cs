@@ -1,13 +1,27 @@
 using Unity.Burst;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Transforms;
 
 partial struct ZombieSpawnerSystem : ISystem
 {
+    private Random random;
+    
+    [BurstCompile]
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<EndSimulationEntityCommandBufferSystem.Singleton>();
+        state.RequireForUpdate<EntitiesReferences>();
+        random = new Random((uint)System.DateTime.Now.Ticks);
+    }
+
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         EntitiesReferences entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();
+
+        EntityCommandBuffer entityCommandBuffer = SystemAPI
+            .GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
         
         foreach ((RefRO<LocalTransform> localTransform, RefRW<ZombieSpawner> zombieSpawner) in SystemAPI
                      .Query<RefRO<LocalTransform>, RefRW<ZombieSpawner>>())
@@ -21,6 +35,18 @@ partial struct ZombieSpawnerSystem : ISystem
 
             Entity zombieEntity = state.EntityManager.Instantiate(entitiesReferences.zombiePrefabEntity);
             SystemAPI.SetComponent(zombieEntity, LocalTransform.FromPosition(localTransform.ValueRO.Position));
+            
+            uint zombieSeed = random.NextUInt();
+            
+            entityCommandBuffer.AddComponent(zombieEntity, new RandomWalking
+            {
+                originPosition = localTransform.ValueRO.Position,
+                targetPosition = localTransform.ValueRO.Position,
+                distanceMin = zombieSpawner.ValueRO.randomWalkingDistanceMin,
+                distanceMax = zombieSpawner.ValueRO.randomWalkingDistanceMax,
+                // random = new Random((uint)zombieEntity.Index),
+                random = new Random(zombieSeed),
+            });
         }
     }
 }
