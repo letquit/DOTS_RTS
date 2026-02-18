@@ -19,7 +19,7 @@ partial struct ShootAttackSystem : ISystem
 
         foreach ((RefRW<LocalTransform> localTransform, RefRW<ShootAttack> shootAttack, RefRO<Target> target,
                      RefRW<UnitMover> unitMover) in SystemAPI
-                     .Query<RefRW<LocalTransform>, RefRW<ShootAttack>, RefRO<Target>, RefRW<UnitMover>>())
+                     .Query<RefRW<LocalTransform>, RefRW<ShootAttack>, RefRO<Target>, RefRW<UnitMover>>().WithDisabled<MoveOverride>())
         {
             if (target.ValueRO.targetEntity == Entity.Null)
             {

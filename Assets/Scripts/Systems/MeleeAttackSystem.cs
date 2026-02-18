@@ -24,7 +24,7 @@ partial struct MeleeAttackSystem : ISystem
         
         foreach ((RefRO<LocalTransform> localTransform, RefRW<MeleeAttack> meleeAttack, RefRO<Target> target,
                      RefRW<UnitMover> unitMover) in SystemAPI
-                     .Query<RefRO<LocalTransform>, RefRW<MeleeAttack>, RefRO<Target>, RefRW<UnitMover>>())
+                     .Query<RefRO<LocalTransform>, RefRW<MeleeAttack>, RefRO<Target>, RefRW<UnitMover>>().WithDisabled<MoveOverride>())
         {
             if (target.ValueRO.targetEntity == Entity.Null)
             {
