@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 4300000, guid: b6815ab17cf31b645b33d7e67d00ce14, type: 2}
     - target: {fileID: 7005349845209837768, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
       propertyPath: range
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7005349845209837768, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
       propertyPath: targetFaction
@@ -120,6 +120,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5416087711316176172, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5569263447977276583}
+    - targetCorrespondingSourceObject: {fileID: 5416087711316176172, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8327524548200763616}
   m_SourcePrefab: {fileID: 100100000, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
 --- !u!1 &614965804913778495 stripped
 GameObject:
@@ -151,6 +154,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootVictimAuthoring
   hitLocalPositionTransform: {fileID: 3704845196360521946}
+--- !u!114 &8327524548200763616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614965804913778495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ec69ca59e3d1745856f1fae6c23322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeAttackAuthoring
+  timerMax: 0.5
+  damageAmount: 10
+  colliderSize: 0.5
 --- !u!4 &3774759646729080078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8629918134380936989, guid: 1b6d4c8f1bdbf2643a736943e2a06fb9, type: 3}
