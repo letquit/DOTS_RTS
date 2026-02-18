@@ -7,14 +7,25 @@ using Unity.Transforms;
 using UnityEngine;
 using RaycastHit = Unity.Physics.RaycastHit;
 
+/// <summary>
+/// 近战攻击系统，处理单位的近战攻击逻辑，包括距离检测、射线检测和伤害计算
+/// </summary>
 partial struct MeleeAttackSystem : ISystem
 {
+    /// <summary>
+    /// 系统创建时的初始化方法
+    /// </summary>
+    /// <param name="ref state">系统状态引用</param>
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<PhysicsWorldSingleton>();
     }
 
+    /// <summary>
+    /// 系统更新方法，执行近战攻击的主要逻辑
+    /// </summary>
+    /// <param name="ref state">系统状态引用</param>
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
@@ -35,6 +46,8 @@ partial struct MeleeAttackSystem : ISystem
             float meleeAttackDistanceSq = 2f;
             bool isCloseEnoughToAttack =
                 math.distancesq(localTransform.ValueRO.Position, targetLocalTransform.Position) < meleeAttackDistanceSq;
+            
+            // 检测是否通过射线碰撞到目标实体
             bool isTouchingTarget = false;
             if (!isCloseEnoughToAttack)
             {
@@ -54,7 +67,7 @@ partial struct MeleeAttackSystem : ISystem
                     {
                         if (raycastHit.Entity == target.ValueRO.targetEntity)
                         {
-                            // Raycast hit target, close enough to attack this entity
+                            // 射线击中目标，足够接近可以攻击此实体
                             isTouchingTarget = true;
                             break;
                         }
@@ -62,14 +75,15 @@ partial struct MeleeAttackSystem : ISystem
                 }
             }
             
+            // 根据与目标的距离决定移动行为或攻击行为
             if (!isCloseEnoughToAttack && !isTouchingTarget)
             {
-                // Target is too far
+                // 目标太远，设置移动目标位置
                 unitMover.ValueRW.targetPosition = targetLocalTransform.Position;
             }
             else
             {
-                // Target is close enough to attack
+                // 目标足够接近可以攻击
                 unitMover.ValueRW.targetPosition = localTransform.ValueRO.Position;
                 
                 meleeAttack.ValueRW.timer -= SystemAPI.Time.DeltaTime;
@@ -79,7 +93,7 @@ partial struct MeleeAttackSystem : ISystem
                 }
                 meleeAttack.ValueRW.timer = meleeAttack.ValueRO.timerMax;
                 
-                
+                // 对目标造成伤害
                 RefRW<Health> targetHealth = SystemAPI.GetComponentRW<Health>(target.ValueRO.targetEntity);
                 targetHealth.ValueRW.healthAmount -= meleeAttack.ValueRO.damageAmount;
                 targetHealth.ValueRW.onHealthChanged = true;

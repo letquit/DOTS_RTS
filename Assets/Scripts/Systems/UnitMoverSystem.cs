@@ -5,10 +5,20 @@ using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 
+/// <summary>
+/// 单位移动系统，负责处理单位的移动逻辑
+/// </summary>
 partial struct UnitMoverSystem : ISystem
 {
+    /// <summary>
+    /// 到达目标位置的距离阈值（平方值）
+    /// </summary>
     public const float REACHED_TARGET_POSITION_DISTANCE_SQ = 2f;
     
+    /// <summary>
+    /// 更新系统，在每一帧调用
+    /// </summary>
+    /// <param name="state">系统状态引用</param>
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
@@ -52,11 +62,23 @@ partial struct UnitMoverSystem : ISystem
     }
 }
 
+/// <summary>
+/// 单位移动作业，用于并行处理单位移动逻辑
+/// </summary>
 [BurstCompile]
 public partial struct UnitMoverJob : IJobEntity
 {
+    /// <summary>
+    /// 时间增量，用于平滑动画和物理计算
+    /// </summary>
     public float deltaTime;
     
+    /// <summary>
+    /// 执行单位移动逻辑
+    /// </summary>
+    /// <param name="localTransform">本地变换组件引用</param>
+    /// <param name="unitMover">单位移动组件（只读）</param>
+    /// <param name="physicsVelocity">物理速度组件引用</param>
     public void Execute(ref LocalTransform localTransform, in UnitMover unitMover, ref PhysicsVelocity physicsVelocity)
     {
         float3 moveDirection =  unitMover.targetPosition - localTransform.Position;
